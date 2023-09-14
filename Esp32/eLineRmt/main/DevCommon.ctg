@@ -1,0 +1,22 @@
+﻿        msgDevInfo=1,              // Informacja o karcie
+        msgPing,         	   // Ping - odbijanie messagów
+        msgExecReset,	           // wykonaj reset karty
+        msgKeepAlive,              // komunikat o poprawnej pracy łącza PC-USB
+        msgGetAuthoBuf,	           // pobranie  bufora do autoryzacji
+        msgSetAuthoRepl,           // wstawienie bufora autoryzującego
+        msgSynchTime,              // Synchronizacja czasu
+        msgAddToLog,               // dodaj do pliku LOG
+        msgGetCfg,                 // pobranie konfiguracji
+        msgSetCfg,                 // ustawienie konfiguracji
+        msgGetCfgHistory,          // pobranie danych o zmianach konfiguracji
+        msgGetSerialNum,           // pobranie numeru seryjnego
+        msgSetSerialNum,           // wysłanie numeru seryjnego
+        msgSetTime,                // ustaw aktualny czas
+
+        msgClrUserFlash,           // rozkaz kasowania USER flash
+        msgReadBaseFlash,          // odczyt zawartości Flash głownego
+        msgReadUserFlash,          // odczyt zawartości USER Flash
+        msgWriteUserFlash,         // zapis USER FLASH
+        msgExecUpdate,             // skopiowanie nowej wersji w aktualnej
+        msgCheckFlashClear,        // sprawdzenie czy obszar Userflash jest czysty
+

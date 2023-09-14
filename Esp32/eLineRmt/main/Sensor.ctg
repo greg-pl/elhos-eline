@@ -1,0 +1,12 @@
+//--------------------------------------------------------------------------
+// Rozkazy do czujników Wifi
+//--------------------------------------------------------------------------
+// D--> rozkaz wysy³ane z urz¹dzenia do PC
+// -->D rozkaz wysy³any z PC do urz¹dzenia
+        msgSensorActiv=1,          //   D--> zg³oszenie aktywnoœci urz¹dzenia
+        msgSensorStartMeas,              //   -->D rozkaz startu/stop pomiaru
+        msgSensorMeasData,               //   D--> dane z pomiaru
+        msgSensorMakeKalibr,             //   -->D wykonaj kalibracje
+        msgOnOffOut,               //   -->D sterowanie wyjœcie OUT
+        msgOnOff12V,              //   -->D sterowanie zasilaniem 12V
+        

@@ -1,0 +1,20 @@
+//----------------------------------------------------
+//elementy konfiguracji dla czujnika WiFi
+//----------------------------------------------------
+	cfgA_DEVTYPE =1,
+	cfgA_SN, 
+	cfgA_DevID, 
+	cfgA_pKalibrInp,
+	cfgA_pKalibrVBat,
+	cfgA_pKalibrV12,
+	cfgA_pKalibrI12,
+	
+
+	
+//KalibrPtDscr
+cfgX_xValFiz=1,
+cfgX_xValMeas,
+
+//KalibrDtDscr
+cfgX_yP0=1,
+cfgX_yP1,	
