@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.937,=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.334,C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit1.pas=Y:\A_Track\Delphi\KeyLoader\Main.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.532,=Y:\A_Track\Delphi\KeyLoader\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.771,=Y:\A_Track\Delphi\KeyLoader\KeyLogItemUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.708,=Y:\A_Track\Delphi\KeyLoader\InterRsd.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.125,C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Project1.dproj=Y:\A_Track\Delphi\KeyLoader\ehKeyLoader.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.986,Y:\A_Track\Delphi\KeyLoader\ehKeyLoader.dproj=Y:\A_Track\Delphi\KeyLoader\elhosKeyLoader.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.884,=C:\Users\Grzegorz\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.286,D:\!!Work\A_Track\Delphi\KeyLoader\elhosKeyLoader.dproj=D:\!!Work\A_Track\Delphi\KeyLoader\eLineKeyLoader.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.193,=Y:\A_Track\Delphi\KeyLoader\CrcUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.516,=C:\Users\Grzegorz\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.704,Y:\A_Track\Delphi\KeyLoader\Unit1.pas=Y:\A_Track\Delphi\KeyLoader\KeyLoaderDef.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.334,C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit1.dfm=Y:\A_Track\Delphi\KeyLoader\Main.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.508,=Y:\A_Track\Delphi\KeyLoader\KeyLoaderCmmUnit.pas</Transaction>
+  </Transactions>
+</BorlandProject>

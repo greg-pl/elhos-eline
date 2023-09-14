@@ -1,0 +1,19 @@
+inherited Form3_Windows: TForm3_Windows
+  DesignerMasterStyle = 0
+  inherited Memo1: TMemo
+    Viewport.Width = 337.000000000000000000
+    Viewport.Height = 369.000000000000000000
+  end
+  inherited StringGrid1: TStringGrid
+    Viewport.Width = 497.000000000000000000
+    Viewport.Height = 409.000000000000000000
+    inherited CheckColumn1: TCheckColumn
+      Size.Width = 40.000000000000000000
+    end
+  end
+  inherited StyleBook1: TStyleBook
+    Styles = <
+      item
+      end>
+  end
+end

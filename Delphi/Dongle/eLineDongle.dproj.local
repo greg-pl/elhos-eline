@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.739,Y:\A_Track\Delphi\Dongle\Main.dfm=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.739,Y:\A_Track\Delphi\Dongle\Main.pas=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.854,Y:\A_Track\Delphi\Dongle\Delphi102-64\HidPi.hpp=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.198,=Y:\A_Track\Delphi\Dongle\WinUsbDll.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.255,=Y:\A_Track\Delphi\Dongle\Delphi102-64\HidPi.hpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.288,=Y:\A_Track\Delphi\Dongle\Delphi102-64\HidUsage.hpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.898,Y:\A_Track\Delphi\Dongle\Delphi102-64\HidUsage.hpp=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.751,=Y:\A_Track\Delphi\Dongle\Hid.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.877,Y:\A_Track\Delphi\Dongle\Delphi102-64\HidSdi.hpp=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.270,=Y:\A_Track\Delphi\Dongle\Delphi102-64\HidSdi.hpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.799,Y:\A_Track\Delphi\Dongle\Delphi102-64\Hid.hpp=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.855,=Y:\A_Track\Delphi\Dongle\ModuleLoader.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.982,=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.840,Y:\A_Track\Delphi\Dongle\Delphi102-64\HidClass.hpp=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.017,Y:\A_Track\Delphi\Dongle\WinUsbUnit.pas=Y:\A_Track\Delphi\Dongle\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.239,=Y:\A_Track\Delphi\Dongle\Delphi102-64\HidClass.hpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.301,=Y:\A_Track\Delphi\Dongle\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.777,=Y:\A_Track\Delphi\Dongle\Delphi102-64\Hid.hpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.335,Y:\A_Track\Delphi\Dongle\Unit1.pas=Y:\A_Track\Delphi\Dongle\WinUsbDev.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.348,Y:\A_Track\Delphi\Dongle\eLineDongle.dproj=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.111,=Y:\A_Track\Delphi\Dongle\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

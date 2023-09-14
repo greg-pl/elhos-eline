@@ -1,0 +1,144 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5FC59008-6CCE-42C5-8ADF-F9D9A81AD84B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="RFM69Skaner\Rfm69Skaner.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Y:\A_Track\Delphi\KeyLoader\eLineKeyLoader.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Y:\ANOT-12\Delphi\Anot12\Anot12.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Y:\P2P\P2P.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\P2P\TcpTest\TcpTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Dongle\eLineDongle.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\WSOP_PATH\Delphi3\FMXCertus\FMXCertus.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FmxTest\FmxTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="FmxTest2\FmxTest2.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="eLineTest\eLinetest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Rfm69Skaner">
+        <MSBuild Projects="RFM69Skaner\Rfm69Skaner.dproj"/>
+    </Target>
+    <Target Name="Rfm69Skaner:Clean">
+        <MSBuild Projects="RFM69Skaner\Rfm69Skaner.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Rfm69Skaner:Make">
+        <MSBuild Projects="RFM69Skaner\Rfm69Skaner.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="eLineKeyLoader">
+        <MSBuild Projects="Y:\A_Track\Delphi\KeyLoader\eLineKeyLoader.dproj"/>
+    </Target>
+    <Target Name="eLineKeyLoader:Clean">
+        <MSBuild Projects="Y:\A_Track\Delphi\KeyLoader\eLineKeyLoader.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="eLineKeyLoader:Make">
+        <MSBuild Projects="Y:\A_Track\Delphi\KeyLoader\eLineKeyLoader.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Anot12">
+        <MSBuild Projects="Y:\ANOT-12\Delphi\Anot12\Anot12.dproj"/>
+    </Target>
+    <Target Name="Anot12:Clean">
+        <MSBuild Projects="Y:\ANOT-12\Delphi\Anot12\Anot12.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Anot12:Make">
+        <MSBuild Projects="Y:\ANOT-12\Delphi\Anot12\Anot12.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="P2P">
+        <MSBuild Projects="Y:\P2P\P2P.dproj"/>
+    </Target>
+    <Target Name="P2P:Clean">
+        <MSBuild Projects="Y:\P2P\P2P.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="P2P:Make">
+        <MSBuild Projects="Y:\P2P\P2P.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TcpTest">
+        <MSBuild Projects="..\..\P2P\TcpTest\TcpTest.dproj"/>
+    </Target>
+    <Target Name="TcpTest:Clean">
+        <MSBuild Projects="..\..\P2P\TcpTest\TcpTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TcpTest:Make">
+        <MSBuild Projects="..\..\P2P\TcpTest\TcpTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="eLineDongle">
+        <MSBuild Projects="Dongle\eLineDongle.dproj"/>
+    </Target>
+    <Target Name="eLineDongle:Clean">
+        <MSBuild Projects="Dongle\eLineDongle.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="eLineDongle:Make">
+        <MSBuild Projects="Dongle\eLineDongle.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FMXCertus">
+        <MSBuild Projects="..\..\WSOP_PATH\Delphi3\FMXCertus\FMXCertus.dproj"/>
+    </Target>
+    <Target Name="FMXCertus:Clean">
+        <MSBuild Projects="..\..\WSOP_PATH\Delphi3\FMXCertus\FMXCertus.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FMXCertus:Make">
+        <MSBuild Projects="..\..\WSOP_PATH\Delphi3\FMXCertus\FMXCertus.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FmxTest">
+        <MSBuild Projects="FmxTest\FmxTest.dproj"/>
+    </Target>
+    <Target Name="FmxTest:Clean">
+        <MSBuild Projects="FmxTest\FmxTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FmxTest:Make">
+        <MSBuild Projects="FmxTest\FmxTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="FmxTest2">
+        <MSBuild Projects="FmxTest2\FmxTest2.dproj"/>
+    </Target>
+    <Target Name="FmxTest2:Clean">
+        <MSBuild Projects="FmxTest2\FmxTest2.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FmxTest2:Make">
+        <MSBuild Projects="FmxTest2\FmxTest2.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="eLinetest">
+        <MSBuild Projects="eLineTest\eLinetest.dproj"/>
+    </Target>
+    <Target Name="eLinetest:Clean">
+        <MSBuild Projects="eLineTest\eLinetest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="eLinetest:Make">
+        <MSBuild Projects="eLineTest\eLinetest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Rfm69Skaner;eLineKeyLoader;Anot12;P2P;TcpTest;eLineDongle;FMXCertus;FmxTest;FmxTest2;eLinetest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Rfm69Skaner:Clean;eLineKeyLoader:Clean;Anot12:Clean;P2P:Clean;TcpTest:Clean;eLineDongle:Clean;FMXCertus:Clean;FmxTest:Clean;FmxTest2:Clean;eLinetest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Rfm69Skaner:Make;eLineKeyLoader:Make;Anot12:Make;P2P:Make;TcpTest:Make;eLineDongle:Make;FMXCertus:Make;FmxTest:Make;FmxTest2:Make;eLinetest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

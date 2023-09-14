@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2007.11.17 17:36:44.718.pas,C:\panze\delphi\projects\Unit1.pas=C:\panze\delphi\projects\usb1\Unit1.pas</Transaction>
+    <Transaction>2007.11.17 17:36:44.718.dfm,C:\panze\delphi\projects\Unit1.dfm=C:\panze\delphi\projects\usb1\Unit1.dfm</Transaction>
+    <Transaction>2007.11.17 17:36:46.578.bdsproj,C:\panze\delphi\projects\Project1.bdsproj=C:\panze\delphi\projects\usb1\Project1.bdsproj</Transaction>
+    <Transaction>2007.11.22 12:14:03.578.bdsproj,C:\panze\delphi\projects\UsbDemo1\Project1.bdsproj=C:\panze\delphi\projects\UsbDemo1\UsbDemo1.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>
