@@ -1,0 +1,21 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: ATRACK_Dongle_V1.PcbDoc   2021.04.29  09:57:46
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : ATRACK_Dongle_V1-RoundHoles.TXT
+ASCII SlotHoles File : ATRACK_Dongle_V1-SlotHoles.TXT
+EIA File   : ATRACK_Dongle_V1.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        11.81mil (0.29997mm)     Round          4                1.05 Inch (26.56 mm)
+T2        19.68mil (0.49987mm)     Round          5                0.69 Inch (17.43 mm)
+T3        31.5mil (0.8001mm)       Round          1                0.00 Inch (0.00 mm)
+T4        39.37mil (1mm)           Round          19               2.86 Inch (72.61 mm)
+T5        39.37mil (1mm)           Slot           2                284.57 Inch (7228.00 mm)
+T6        78.74mil (2mm)           Round          2                1.43 Inch (36.22 mm)
+---------------------------------------------------------------------------
+Totals                                            33               290.58 Inch (7380.82 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

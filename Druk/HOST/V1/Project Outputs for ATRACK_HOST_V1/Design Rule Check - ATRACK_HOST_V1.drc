@@ -1,0 +1,66 @@
+Protel Design System Design Rule Check
+PCB File : D:\!!Work\A_Track\Druk\HOST\V1\ATRACK_HOST_V1.PcbDoc
+Date     : 2021.01.29
+Time     : 17:56:10
+
+WARNING: Unplated multi-layer pad(s) detected
+   Pad D17-0(-705mil,-1155mil)  Multi-Layer on Net _NC6
+
+Processing Rule : Clearance Constraint (Gap=14mil) (InPolygon),(not InPolygon)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=68mil) (InNetClass('Class_INP')),(not InNetClass('Class_INP'))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=100mil) (InNetClass('Class_RS485')),(not InNetClass('Class_RS485'))
+Rule Violations :0
+
+Processing Rule : Matched Net Lengths(Tolerance=300mil) (InNet('TD_P'))
+Rule Violations :0
+
+Processing Rule : Matched Net Lengths(Tolerance=300mil) (InNet('RD_N'))
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+   Violation between Un-Routed Net Constraint: Unplated Pad D17-0(-705mil,-1155mil)  Multi-Layer
+Rule Violations :1
+
+Processing Rule : Clearance Constraint (Gap=7mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=8mil) (Max=200mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (Disabled)(All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=11.811mil) (Max=200mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=4mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silkscreen Over Component Pads (Clearance=4mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=4mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=80mil) (InNetClass('RELAYS')),(not InNetClass('RELAYS'))
+Rule Violations :0
+
+
+Violations Detected : 1
+Time Elapsed        : 00:00:02

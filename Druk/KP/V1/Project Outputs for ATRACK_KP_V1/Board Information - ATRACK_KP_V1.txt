@@ -1,0 +1,20 @@
+Board Information Report
+Filename     : D:\!!Work\A_Track\Druk\KP\V1\ATRACK_KP_V1.PcbDoc
+Date         : 2021.01.24
+Time         : 16:37:47
+Time Elapsed : 00:00:00
+
+Plated Hole Size, Pads, Vias
+    0mm, 642, 0
+    0.3mm, 0, 84
+    0.5mm, 0, 60
+    0.7mm, 0, 22
+    0.8mm, 2, 5
+    0.9mm, 38, 0
+    1mm, 0, 1
+    1.2mm, 57, 0
+    1.3mm, 4, 0
+    1.6mm, 2, 0
+    3.2mm, 4, 0
+    3.3mm, 2, 0
+count : 12

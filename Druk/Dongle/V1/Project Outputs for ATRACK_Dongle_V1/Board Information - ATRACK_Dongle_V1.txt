@@ -1,0 +1,13 @@
+Board Information Report
+Filename     : Y:\A_Track\Druk\Dongle\V1\ATRACK_Dongle_V1.PcbDoc
+Date         : 2021.04.29
+Time         : 09:42:08
+Time Elapsed : 00:00:00
+
+Plated Hole Size, Pads, Vias
+    0mm, 110, 0
+    0.3mm, 0, 4
+    0.5mm, 0, 6
+    1mm, 19, 0
+    2mm, 2, 0
+count : 5
