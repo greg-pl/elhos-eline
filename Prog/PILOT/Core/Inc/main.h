@@ -94,6 +94,7 @@ void Error_Handler(void);
 #define PIN_TX_GPIO_Port GPIOB
 #define PIN_RX_Pin GPIO_PIN_7
 #define PIN_RX_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
@@ -103,5 +104,3 @@ void Error_Handler(void);
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
