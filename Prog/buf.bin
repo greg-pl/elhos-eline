@@ -1,0 +1,12 @@
+Shell          	X	3	830	1
+MAIN           	R	3	852	2
+LinkThr        	R	2	222	7
+IDLE           	R	0	107	3
+tcpip_thread   	B	3	917	5
+UdpConfigTask  	B	3	382	8
+CMM_3          	S	3	944	11
+TcpSvr         	B	3	868	12
+Tmr Svc        	B	2	214	4
+EthIf          	B	6	261	6
+CMM_1          	S	3	944	9
+CMM_2          	S	3	944	10

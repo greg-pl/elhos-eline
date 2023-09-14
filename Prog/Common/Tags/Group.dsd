@@ -1,0 +1,19 @@
+﻿//--------------------------------------------------------------------------
+// Definicja grup komend
+//--------------------------------------------------------------------------
+
+dsdUNKNOWN = 0, //
+dsdDEV_COMMON= 1, //
+dsdHOST, //
+dsdKP, //
+dsdSENSOR, //
+
+dsdFIRST_SERVICE=10, //
+dsdBREAK_L = dsdFIRST_SERVICE, //
+dsdBREAK_R, //
+dsdSUSP_L, //
+dsdSUSP_R, //
+dsdSLIP_SIDE, //
+dsdWEIGHT_L, //
+dsdWEIGHT_R, //
+dsdLAST //

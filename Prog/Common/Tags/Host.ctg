@@ -1,0 +1,16 @@
+﻿//--------------------------------------------------------------------------
+// Host - lista rozkazów
+//--------------------------------------------------------------------------
+        msgRdKeyLog=1,             // odczyt informacji z KeyLog'a
+        msgPilotKey,               // odebrano nacisnięcie na pilocie
+        msgPilotDtEx,              // inne dane o pilocie
+        msgPilotCmd,               // rozkaz do odbiornika pilota
+
+        msgHostBuzzer,             // Host sterowanie BUZZEREM
+        msgHostGetOut,             // pobranie z Host'a sterowania wyjściami out1..out6
+        msgHostSetOut,             // posyłane do Host'a sterowanie wyjściami out1..out6
+        msgRdMdbReg,               //
+        msgWrMdbReg,               //
+        msgHostSterFalownik,       // 10: sterowanie falownikami: B0-numer_falownika, B1-Funkcja
+        msgHostInpState,
+

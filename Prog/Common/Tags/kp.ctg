@@ -1,0 +1,9 @@
+﻿//--------------------------------------------------------------------------
+// KP (karta pomiarowa) - lista rozkazów
+//--------------------------------------------------------------------------
+        msgKPGetServices=1,          // wysłanie informacji o usługach
+        msgKPSetPLS,                 // sterowania liniami 'biały drut' w rybie testowym
+        msgKPGetPLS,                 // odczytanie stanu linii 'biały drut'
+        msgKPGetTestData,          // Dane dla trybu testowego z An8Dg8
+        msgKPTestData,             // Dane dla trybu testowego z An8Dg8
+        

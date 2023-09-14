@@ -1,0 +1,96 @@
+//----------------------------------------------------
+//elementy konfiguracji dla karty KP
+//----------------------------------------------------
+
+cfgA_SN = 1,
+cfgA_DEVID,
+cfgA_HostIP,
+
+cfgA_TCP   = 11,
+cfgA_BREAK_L   = 12,
+cfgA_BREAK_R   = 13,
+cfgA_SUSP_L   = 14,
+cfgA_SUSP_R   = 15,
+cfgA_SLIPSIDE   = 16,
+cfgA_WEIGHT_L   = 17,
+cfgA_WEIGHT_R   = 18,
+cfgA_BIN_AC   = 19,
+
+//tcp
+cfgB_tDhcp=1,
+cfgB_tIp,
+cfgB_tMask,
+cfgB_tGw,
+cfgB_tDns1,
+cfgB_tDns2,
+
+//BreakDscr
+cfgB_bEnab=1,
+cfgB_bPressBitNr,
+cfgB_bRollBitNr,
+cfgB_bRollDiameter,
+cfgB_bAnInutNr,
+cfgB_bRollImpCnt,
+cfgB_bKalibr,
+cfgB_bKalibQuqlity,
+
+//Suspension
+cfgB_sEnab=1,
+cfgB_sAnInutNr,
+cfgB_sDeactivTime,
+cfgB_sDeadZone,
+cfgB_sKalibrLin,
+cfgB_sKalibr,
+cfgB_sKalibQuqlity,
+
+//SlipSide
+cfgB_pEnab=1,
+cfgB_pTypPlyty,
+cfgB_pPressNajazdNr,
+cfgB_pPressZjazdNr,
+cfgB_pAnInutNr,
+cfgB_pInvertNajazd,
+cfgB_pInvertZjazd,
+cfgB_pKalibr,
+cfgB_pMaxMeasTime,
+cfgB_pMinMeasTime,
+cfgB_pDeActivTime,
+cfgB_pMaxMeasFlip,
+cfgB_pMaxZeroShift,
+cfgB_pDeadZone,
+cfgB_pMaxFlipTime,
+
+//Weight
+cfgB_wEnab=1,
+cfgB_wKalibr,
+cfgB_wChnKalibr,
+
+//WeightChn
+cfgC_wAnInputNr=1,
+cfgC_wAnZero,
+cfgC_wWspSkali,
+
+//BinAsAcCfg
+cfgC_bEnab=1,
+cfgC_bLimitL,
+cfgC_bLimitH,
+
+//BinInpDscr
+cfgB_bChn=1,
+
+
+//KalibrDtDblZeroDscr
+cfgX_zZ0=1,
+cfgX_zP1,
+
+//KalibrPtDscr
+cfgX_xValFiz=1,
+cfgX_xValMeas,
+
+//KalibrZeroDscr
+cfgX_xInpVal_Open=1,
+cfgX_xInpVal_Close,
+
+//KalibrDtDscr
+cfgX_yP0=1,
+cfgX_yP1,

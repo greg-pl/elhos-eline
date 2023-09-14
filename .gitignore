@@ -3,3 +3,6 @@
 *.dcu
 *.exe
 *.old
+*.d
+*.o
+*.su

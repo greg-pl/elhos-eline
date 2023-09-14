@@ -1,0 +1,25 @@
+﻿//--------------------------------------------------------------------------
+// Serwisy rozkazy wspolne
+//--------------------------------------------------------------------------
+// D--> rozkaz wysyłane z urządzenia do PC
+// -->D rozkaz wysyłany z PC do urządzenia
+        msgServicActiv=1,          //   D--> zgłoszenie aktywności urządzenia
+        msgStartMeas,              //   -->D rozkaz startu/stop pomiaru
+        msgMeasData,               //   D--> dane z pomiaru
+        msgMakeKalibr,             //   -->D wykonaj kalibracje
+        msgCfgError,	           //   D--> niepoprawna klibracja, serwis nieczynny
+        msgMeasDataNoCfg,          //   D--> dane w przypadku niepoprwnej konfiguracji urządzenia
+
+
+
+//Breaks
+	msgRollTurnOnWhiteL=30,    // -->D rozkaz ustawienia lini PL
+
+//Suspension
+
+//SlipSide
+        msgSlipSideResult=30,       // 80=$50
+        msgSlipSideSetZeroShift,
+
+//Weight
+

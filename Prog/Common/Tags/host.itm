@@ -1,0 +1,35 @@
+//----------------------------------------------------
+//elementy konfiguracji dla karty HOST
+//----------------------------------------------------
+cfgA_SN = 1,
+cfgA_DEVID = 2,
+
+cfgA_TCP   = 11,
+cfgA_HostBase, 
+cfgA_Emerg,
+
+//tcp
+cfgB_tDhcp=1,
+cfgB_tIp,
+cfgB_tMask,
+cfgB_tGw,
+cfgB_tDns1,
+cfgB_tDns2,
+
+//host
+cfgH_liniaType=1,
+cfgH_falownikType,    
+cfgH_radioChannel,    
+cfgH_radioTxPower,    
+cfgH_falowFreqLow,    
+cfgH_falowFreqHigh,   
+cfgH_falowFreqSupport,
+cfgH_pilotBeep,
+
+cfgH_emerPilotOFF=1,                 
+cfgH_emerRolerOffAfterBeamUp,      
+cfgH_delayRolerOffAfterBeamUp,     
+cfgH_emerRolerOffAfterPCLost,      
+cfgH_delayRolerOffAfterPCLost,     
+cfgH_emerInverterOFFAfterConnLost, 
+cfgH_delayInverterOFFAfterConnLost,
