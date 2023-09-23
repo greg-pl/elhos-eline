@@ -4,6 +4,7 @@
     "search.exclude": {
         "**/.history": true,
         "**/Output": true,
+        "**/Debug": true,
     },
     "files.watcherExclude": {
         "**/.history": true,
