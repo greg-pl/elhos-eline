@@ -7,3 +7,9 @@
 *.o
 *.su
 *.bak
+Prog/Dongle/build/
+Prog/.metadata/
+*.txaPackage
+Prog/Dongle/Debug/Dongle.elf
+Prog/Dongle/Debug/Dongle.list
+Prog/Dongle/Debug/Dongle.map
