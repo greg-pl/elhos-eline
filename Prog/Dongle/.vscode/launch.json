@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RunDebug",
+            "cwd": "${workspaceFolder}",
+            "executable": "./Debug/Dongle.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "stlink",
+            "serverpath": "c:/ST/STM32CubeIDE_1.11.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.stlink-gdb-server.win32_2.0.400.202209281104/tools/bin/ST-LINK_gdbserver.exe",
+            "device": "STM32F103xx",
+            "interface": "swd",
+            "showDevDebugOutput": "raw",
+            "svdFile": "c:/Users/Grzegorz/.platformio/platforms/ststm32/misc/svd/STM32F103xx.svd",
+        }
+    ]
+}

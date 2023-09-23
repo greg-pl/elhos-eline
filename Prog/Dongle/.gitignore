@@ -1,0 +1,9 @@
+*.zip
+*.~*
+*.dcu
+*.exe
+*.old
+*.d
+*.o
+*.su
+*.bak

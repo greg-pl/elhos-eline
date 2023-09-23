@@ -1,0 +1,17 @@
+{
+    "cortex-debug.armToolchainPath": "n:/", // Change the path here
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "search.exclude": {
+        "**/.history": true,
+        "**/Output": true,
+    },
+    "files.watcherExclude": {
+        "**/.history": true,
+        "**/Output": true,
+    },
+    "files.associations": {
+        "*.h": "c",
+        "*.c": "c"
+    },
+   "cortex-debug.variableUseNaturalFormat": true,
+}
