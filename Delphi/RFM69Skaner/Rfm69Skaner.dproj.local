@@ -12,21 +12,21 @@
     <File Path="U_USB.pas"/>
   </ProjectSortOrder>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.787,D:\!!Work\Szarpak\Delphi\SzSkaner\SzSkaner.dproj=D:\!!Work\Szarpak\Delphi\SzSkaner\RfSkaner.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.922,D:\!!Work\A_Track\Delphi\Rfm69Skaner\Rfm69Skaner.dproj=D:\!!Work\A_Track\Delphi\Rfm69Skaner\SzSkaner.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.313,D:\!!Work\A_Track\Delphi\RFM69Skaner\SzSkanerCfg.dfm=D:\!!Work\A_Track\Delphi\RFM69Skaner\Rfm69SkanerCfg.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.313,D:\!!Work\A_Track\Delphi\RFM69Skaner\SzSkanerCfg.pas=D:\!!Work\A_Track\Delphi\RFM69Skaner\Rfm69SkanerCfg.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.184,D:\!!Work\Szarpak\Delphi\SzSkaner\SzMain.pas=D:\!!Work\Szarpak\Delphi\SzSkaner\RfMain.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.530,D:\!!Work\A_Track\Delphi\RFM69Skaner\Rfm69Main.dfm=D:\!!Work\A_Track\Delphi\RFM69Skaner\SzMain.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.922,D:\!!Work\A_Track\Delphi\Rfm69Skaner\SzSkaner.dproj=D:\!!Work\A_Track\Delphi\Rfm69Skaner\Rfm69Skaner.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.787,D:\!!Work\Szarpak\Delphi\SzSkaner\RfSkaner.dproj=D:\!!Work\Szarpak\Delphi\SzSkaner\SzSkaner.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.184,D:\!!Work\Szarpak\Delphi\SzSkaner\RfMain.dfm=D:\!!Work\Szarpak\Delphi\SzSkaner\SzMain.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.184,D:\!!Work\Szarpak\Delphi\SzSkaner\RfMain.pas=D:\!!Work\Szarpak\Delphi\SzSkaner\SzMain.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.370,D:\!!Work\Szarpak\Delphi\SzSkaner\SzSkanerCfg.pas=D:\!!Work\Szarpak\Delphi\SzSkaner\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.687,=D:\!!Work\A_Track\Delphi\RFM69Skaner\U_USB.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.622,D:\!!Work\A_Track\Delphi\Rfm69Skaner\Rfm69Skaner.dproj=D:\!!Work\A_Track\Delphi\Rfm69Skaner\Rfm69Skaner.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.370,D:\!!Work\Szarpak\Delphi\SzSkaner\Unit1.dfm=D:\!!Work\Szarpak\Delphi\SzSkaner\SzSkanerCfg.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.370,D:\!!Work\Szarpak\Delphi\SzSkaner\Unit1.pas=D:\!!Work\Szarpak\Delphi\SzSkaner\SzSkanerCfg.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.672,=D:\!!Work\Szarpak\Delphi\SzSkaner\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.184,D:\!!Work\Szarpak\Delphi\SzSkaner\SzMain.dfm=D:\!!Work\Szarpak\Delphi\SzSkaner\RfMain.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.530,D:\!!Work\A_Track\Delphi\RFM69Skaner\SzMain.dfm=D:\!!Work\A_Track\Delphi\RFM69Skaner\Rfm69Main.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.345,D:\!!Work\A_Track\Delphi\RFM69Skaner\Unit1.pas=D:\!!Work\A_Track\Delphi\RFM69Skaner\eLineDef.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.530,D:\!!Work\A_Track\Delphi\RFM69Skaner\SzMain.pas=D:\!!Work\A_Track\Delphi\RFM69Skaner\Rfm69Main.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.313,D:\!!Work\A_Track\Delphi\RFM69Skaner\Rfm69SkanerCfg.pas=D:\!!Work\A_Track\Delphi\RFM69Skaner\SzSkanerCfg.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.181,=D:\!!Work\Szarpak\Delphi\SzSkaner\CrcUnit.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.441,=D:\!!Work\A_Track\Delphi\RFM69Skaner\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.530,D:\!!Work\A_Track\Delphi\RFM69Skaner\Rfm69Main.pas=D:\!!Work\A_Track\Delphi\RFM69Skaner\SzMain.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.672,=D:\!!Work\Szarpak\Delphi\SzSkaner\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.370,D:\!!Work\Szarpak\Delphi\SzSkaner\SzSkanerCfg.dfm=D:\!!Work\Szarpak\Delphi\SzSkaner\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.622,D:\!!Work\A_Track\Delphi\Rfm69Skaner\Rfm69Skaner.dproj=D:\!!Work\A_Track\Delphi\Rfm69Skaner\Rfm69Skaner.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.345,D:\!!Work\A_Track\Delphi\RFM69Skaner\eLineDef.pas=D:\!!Work\A_Track\Delphi\RFM69Skaner\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.313,D:\!!Work\A_Track\Delphi\RFM69Skaner\Rfm69SkanerCfg.dfm=D:\!!Work\A_Track\Delphi\RFM69Skaner\SzSkanerCfg.dfm</Transaction>
   </Transactions>
 </BorlandProject>

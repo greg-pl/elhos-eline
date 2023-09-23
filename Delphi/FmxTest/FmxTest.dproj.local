@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.345,=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.510,D:\!!Work\A_Track\Delphi\FmxTest\Main.pas=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.233,D:\!!Work\A_Track\Delphi\FmxTest\FmxTest.dproj=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.510,D:\!!Work\A_Track\Delphi\FmxTest\Main.fmx=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit3.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.510,C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit3.pas=D:\!!Work\A_Track\Delphi\FmxTest\Main.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.233,C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Project1.dproj=D:\!!Work\A_Track\Delphi\FmxTest\FmxTest.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.510,C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit3.fmx=D:\!!Work\A_Track\Delphi\FmxTest\Main.fmx</Transaction>
     <Transaction>1899.12.30 00:00:00.000.884,=C:\Users\Grzegorz\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.516,=C:\Users\Grzegorz\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.345,=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
   </Transactions>
 </BorlandProject>

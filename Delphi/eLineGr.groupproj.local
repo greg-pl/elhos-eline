@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.766,C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\ProjectGroup1.groupproj=Y:\A_Track\Delphi\elhosLineGr.groupproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.083,D:\!!Work\A_Track\Delphi\eLineGr.groupproj=D:\!!Work\A_Track\Delphi\elhosLineGr.groupproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.766,Y:\A_Track\Delphi\elhosLineGr.groupproj=C:\Users\Grzegorz\OneDrive\Dokumenty\Embarcadero\Studio\Projects\ProjectGroup1.groupproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.083,D:\!!Work\A_Track\Delphi\elhosLineGr.groupproj=D:\!!Work\A_Track\Delphi\eLineGr.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="D:\!!Work\A_Track\Delphi\Dongle\eLineDongle.dproj"/>
+		<Projects ActiveProject="D:\!!Work\A_eLine\Delphi\Dongle\eLineDongle.dproj"/>
 	</Default.Personality>
 </BorlandProject>
