@@ -75,8 +75,6 @@
 /*---------- -----------*/
 #define MAX_STATIC_ALLOC_SIZE     512
 
-#define USBD_SUPPORT_WINUSB       1
-
 /****************************************/
 /* #define for FS and HS identification */
 #define DEVICE_FS 		0
