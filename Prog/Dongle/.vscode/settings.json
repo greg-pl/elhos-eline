@@ -9,6 +9,7 @@
     "files.watcherExclude": {
         "**/.history": true,
         "**/Output": true,
+        "**/Debug": true,
     },
     "files.associations": {
         "*.h": "c",

@@ -4,12 +4,8 @@
   * @author  GeKa
   * @brief   header file for the usbd_winusb.c file.
   ******************************************************************************
-  *
-  *
-  ******************************************************************************
   */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __USB_WINUSB_H
 #define __USB_WINUSB_H
 
@@ -20,19 +16,7 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include  "usbd_ioreq.h"
 
-/** @addtogroup STM32_USB_DEVICE_LIBRARY
-  * @{
-  */
 
-/** @defgroup usbd_winusb
-  * @brief This file is the Header file for usbd_winusb.c
-  * @{
-  */
-
-
-/** @defgroup usbd_cdc_Exported_Defines
-  * @{
-  */
 #define CDC_IN_EP                                   0x81U  /* EP1 for data IN */
 #define CDC_OUT_EP                                  0x01U  /* EP1 for data OUT */
 #define CDC_CMD_EP                                  0x82U  /* EP2 for CDC commands */
@@ -75,29 +59,15 @@ extern "C" {
   */
 
 
-/** @defgroup USBD_CORE_Exported_TypesDefinitions
-  * @{
-  */
 
-/**
-  * @}
-  */
-typedef struct
-{
-  uint32_t bitrate;
-  uint8_t  format;
-  uint8_t  paritytype;
-  uint8_t  datatype;
-} USBD_CDC_LineCodingTypeDef;
-
-typedef struct _USBD_CDC_Itf
+typedef struct 
 {
   int8_t (* Init)(void);
   int8_t (* DeInit)(void);
   int8_t (* Control)(uint8_t cmd, uint8_t *pbuf, uint16_t length);
   int8_t (* Receive)(uint8_t *Buf, uint32_t *Len);
 
-} USBD_CDC_ItfTypeDef;
+} USBD_WINUSB_ItfTypeDef;
 
 
 typedef struct
@@ -113,59 +83,26 @@ typedef struct
   __IO uint32_t TxState;
   __IO uint32_t RxState;
 }
-USBD_CDC_HandleTypeDef;
+USBD_WINUSB_HandleTypeDef;
 
 
 
-/** @defgroup USBD_CORE_Exported_Macros
-  * @{
-  */
 
-/**
-  * @}
-  */
+extern USBD_ClassTypeDef  USBD_WINUSB;
+#define USBD_WINUSB_CLASS    &USBD_WINUSB
 
-/** @defgroup USBD_CORE_Exported_Variables
-  * @{
-  */
+uint8_t  USBD_WINUSB_RegisterInterface(USBD_HandleTypeDef   *pdev,
+                                    USBD_WINUSB_ItfTypeDef *fops);
 
-extern USBD_ClassTypeDef  USBD_CDC;
-#define USBD_CDC_CLASS    &USBD_CDC
-/**
-  * @}
-  */
-
-/** @defgroup USB_CORE_Exported_Functions
-  * @{
-  */
-uint8_t  USBD_CDC_RegisterInterface(USBD_HandleTypeDef   *pdev,
-                                    USBD_CDC_ItfTypeDef *fops);
-
-uint8_t  USBD_CDC_SetTxBuffer(USBD_HandleTypeDef   *pdev,
+uint8_t  USBD_WINUSB_SetTxBuffer(USBD_HandleTypeDef   *pdev,
                               uint8_t  *pbuff,
                               uint16_t length);
 
-uint8_t  USBD_CDC_SetRxBuffer(USBD_HandleTypeDef   *pdev,
+uint8_t  USBD_WINUSB_SetRxBuffer(USBD_HandleTypeDef   *pdev,
                               uint8_t  *pbuff);
 
-uint8_t  USBD_CDC_ReceivePacket(USBD_HandleTypeDef *pdev);
+uint8_t  USBD_WINUSB_ReceivePacket(USBD_HandleTypeDef *pdev);
 
-uint8_t  USBD_CDC_TransmitPacket(USBD_HandleTypeDef *pdev);
-/**
-  * @}
-  */
+uint8_t  USBD_WINUSB_TransmitPacket(USBD_HandleTypeDef *pdev);
 
-#ifdef __cplusplus
-}
 #endif
-
-#endif  /* __USB_CDC_H */
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
