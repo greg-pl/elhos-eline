@@ -93,10 +93,11 @@ static void USBD_ClrFeature(USBD_HandleTypeDef *pdev,
                             USBD_SetupReqTypedef *req);
 
 static uint8_t USBD_GetLen(uint8_t *buf);
-
+//WINUSB_Block_Start
 #if (USBD_SUPPORT_WINUSB==1)
 static void USBD_WinUSBGetDescriptor(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req);
 #endif
+//WINUSB_Block_End
 
 /**
   * @}
@@ -124,12 +125,17 @@ USBD_StatusTypeDef  USBD_StdDevReq(USBD_HandleTypeDef *pdev,
   {
     case USB_REQ_TYPE_CLASS:
     case USB_REQ_TYPE_VENDOR:
-		if (req->bRequest == USB_REQ_MS_VENDOR_CODE) {
-			USBD_WinUSBGetDescriptor(pdev, req);
-		} else {
-			pdev->pClass->Setup(pdev, req);
-		}
-		break;
+//WINUSB_Block_Start
+#if (USBD_SUPPORT_WINUSB==1)
+      if (req->bRequest == USB_REQ_MS_VENDOR_CODE) 
+        USBD_WinUSBGetDescriptor(pdev, req);
+      else 
+        pdev->pClass->Setup(pdev, req);
+#else
+      pdev->pClass->Setup(pdev, req);
+#endif
+//WINUSB_Block_End
+      break;
 
     case USB_REQ_TYPE_STANDARD:
       switch (req->bRequest)
@@ -161,12 +167,13 @@ USBD_StatusTypeDef  USBD_StdDevReq(USBD_HandleTypeDef *pdev,
         case USB_REQ_CLEAR_FEATURE:
           USBD_ClrFeature(pdev, req);
           break;
-
+//WINUSB_Block_Start
 #if (USBD_SUPPORT_WINUSB==1)
 		case USB_REQ_MS_VENDOR_CODE:
 			USBD_WinUSBGetDescriptor(pdev, req);
 			break;
-#endif // (USBD_SUPPORT_WINUSB==1)
+#endif
+//WINUSB_Block_End
 
         default:
           USBD_CtlError(pdev, req);
@@ -227,12 +234,14 @@ USBD_StatusTypeDef  USBD_StdItfReq(USBD_HandleTypeDef *pdev,
       break;
 
     default:
+//WINUSB_Block_Start
 #if (USBD_SUPPORT_WINUSB==1)
 		if (req->bmRequest == 0xC1) {
 			USBD_WinUSBGetDescriptor(pdev, req);
 			break;
 		}
-#endif // (USBD_SUPPORT_WINUSB==1)
+#endif
+//WINUSB_Block_End
 
       USBD_CtlError(pdev, req);
       break;
@@ -536,11 +545,13 @@ static void USBD_GetDescriptor(USBD_HandleTypeDef *pdev,
             err++;
           }
           break;
+//WINUSB_Block_Start
 #if (USBD_SUPPORT_WINUSB==1)
 		case 0xEE: // OS String
 			pbuf = (uint8_t*) pdev->pClass->GetWinUSBOSDescriptor(&len);
 			break;
-#endif // (USBD_SUPPORT_WINUSB==1)
+#endif 
+//WINUSB_Block_End
         default:
 #if (USBD_SUPPORT_USER_STRING_DESC == 1U)
           if (pdev->pClass->GetUsrStrDescriptor != NULL)
@@ -926,7 +937,7 @@ static uint8_t USBD_GetLen(uint8_t *buf)
 
   return len;
 }
-
+//WINUSB_Block_Start
 #if (USBD_SUPPORT_WINUSB==1)
 static void USBD_WinUSBGetDescriptor(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req) {
 	uint16_t len;
@@ -952,8 +963,8 @@ static void USBD_WinUSBGetDescriptor(USBD_HandleTypeDef *pdev, USBD_SetupReqType
 	}
 
 }
-
-#endif // (USBD_SUPPORT_WINUSB==1)
+#endif
+//WINUSB_Block_End
 
 /**
   * @}
