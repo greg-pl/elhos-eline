@@ -7,7 +7,7 @@ uses
   WinUsbDll;
 
 type
-  TOnDataRecived = procedure(Sender: TObject; buf : TBytes) of object;
+  TOnDataRecived = procedure(Sender: TObject; PipeId: integer; buf: TBytes) of object;
 
   TWinUsbDev = class(TObject)
   private type
@@ -16,20 +16,21 @@ type
       FCriSection: TRTLCriticalSection;
       mOwnerHandle: THandle;
       mUsbHandle: THandle;
+      mPipeID: byte;
       function ReadData(buf: TBytes): integer;
 
     protected
       procedure Execute; override;
     public
-      constructor Create(aHandle: THandle);
+      constructor Create(aHandle: THandle; aPipeID: byte);
       destructor Destroy; override;
       procedure setUsbHandle(h: THandle);
     end;
 
     TDescriptor = record // Generic descriptor
-      Length: Byte;
-      DescriptorType: Byte;
-      Data: Array [0 .. 1000] of Byte; // will crash if descriptor is longer.
+      Length: byte;
+      DescriptorType: byte;
+      Data: Array [0 .. 1000] of byte; // will crash if descriptor is longer.
     end;
 
   private const
@@ -40,20 +41,20 @@ type
 
   public type
     TDscrTypeDef = packed record // Generic descriptor
-      Length: Byte;
-      DescriptorType: Byte;
+      Length: byte;
+      DescriptorType: byte;
       bcdVer: word;
-      bDeviceClass: Byte;
-      bDeviceSubClass: Byte;
-      bDeviceProtocol: Byte;
-      bMaxPacketSize: Byte;
+      bDeviceClass: byte;
+      bDeviceSubClass: byte;
+      bDeviceProtocol: byte;
+      bMaxPacketSize: byte;
       idVendor: word;
       idProduct: word;
       bcdDevice: word;
-      ManufStrIdx: Byte;
-      ProductStrIdx: Byte;
-      SerialStrIdx: Byte;
-      NumConfiguration: Byte;
+      ManufStrIdx: byte;
+      ProductStrIdx: byte;
+      SerialStrIdx: byte;
+      NumConfiguration: byte;
     end;
 
     TRecData = class(TObject)
@@ -67,31 +68,33 @@ type
     mHandleTab: TWOHandleArray;
     hWinUsbHandle: THandle;
     hDevice: THandle;
-    RdThread: TRdThread;
+    RdThreadTab: array of TRdThread;
     mMyHandle: THandle;
     procedure WndProc(var AMessage: TMessage);
     procedure wmDataRecived(var AMessage: TMessage); message wm_DataRecived;
-
+    procedure TerminateThreads;
   public
     OnDataRecived: TOnDataRecived;
     constructor Create;
     destructor Destroy; override;
+
     function open(Vid, pid: integer): boolean;
     function isOpened: boolean;
     function readDevDescription(var descr: TDscrTypeDef): boolean;
     procedure getPipeInfo(var info: TPipeInfois);
 
-    function writePipe(PipeID: Byte; var Data; len: integer): boolean; overload;
-    function writePipe(PipeID: Byte; buf: TBytes): boolean; overload;
+    function writePipe(PipeId: byte; var Data; len: integer): boolean; overload;
+    function writePipe(PipeId: byte; buf: TBytes): boolean; overload;
 
     procedure Close;
   end;
 
 implementation
 
-constructor TWinUsbDev.TRdThread.Create(aHandle: THandle);
+constructor TWinUsbDev.TRdThread.Create(aHandle: THandle; aPipeID: byte);
 begin
   inherited Create;
+  mPipeID := aPipeID;
   InitializeCriticalSection(FCriSection);
   mUsbHandle := INVALID_HANDLE_VALUE;
   mOwnerHandle := aHandle;
@@ -108,14 +111,14 @@ var
   Overlapped: TOverlapped;
   BytesRead: Cardinal;
   q: boolean;
-//  tt: Cardinal;
-//  t1: Cardinal;
+  tt: Cardinal;
+  t1: Cardinal;
 begin
   try
-//    tt := GetTickCount;
-    q := WinUsb_ReadPipe(mUsbHandle, $81, @buf[0], Length(buf), BytesRead, nil);
-//    t1 := GetTickCount - tt;
-//    OutputDebugString(pchar(Format('N=%u T1=%u ', [BytesRead, t1])));
+    tt := GetTickCount;
+    q := WinUsb_ReadPipe(mUsbHandle, mPipeID, @buf[0], Length(buf), BytesRead, nil);
+    t1 := GetTickCount - tt;
+    //OutputDebugString(pchar(Format('N=%u T1=%u ', [BytesRead, t1])));
     Result := BytesRead;
     if not(q) then
       Result := 0;
@@ -139,8 +142,8 @@ begin
       if n > 0 then
       begin
         recData := TRecData.Create(Data, n);
-        postMessage(mOwnerHandle, wm_DataRecived, integer(recData), 0);
-  //      OutputDebugString(pchar(Format('Odebrano n=%u', [n])));
+        postMessage(mOwnerHandle, wm_DataRecived, integer(recData), mPipeID);
+        // OutputDebugString(pchar(Format('Odebrano n=%u', [n])));
       end;
     end
     else
@@ -148,6 +151,7 @@ begin
       sleep(100);
     end;
   end;
+  OutputDebugString(pchar(Format('ID=%u Finished', [mPipeID])));
 end;
 
 procedure TWinUsbDev.TRdThread.setUsbHandle(h: THandle);
@@ -180,17 +184,31 @@ begin
   hDevice := INVALID_HANDLE_VALUE;
   mHandleTab[HPOS_EVENT] := CreateEvent(nil, False, True, nil);
   mMyHandle := Classes.AllocateHWnd(WndProc);
-  RdThread := TRdThread.Create(mMyHandle);
-  RdThread.FreeOnTerminate := False;
 end;
 
 destructor TWinUsbDev.Destroy;
+var
+  i, n: integer;
 begin
   Close;
-  RdThread.Terminate;
-  RdThread.WaitFor;
-  RdThread.Free;
-  inherited;
+  TerminateThreads;
+end;
+
+procedure TWinUsbDev.TerminateThreads;
+var
+  i, n: integer;
+begin
+  n := Length(RdThreadTab);
+  if n > 0 then
+  begin
+    for i := 0 to n - 1 do
+    begin
+      RdThreadTab[i].Terminate;
+      RdThreadTab[i].WaitFor;
+      RdThreadTab[i].Free;
+    end;
+    setLength(RdThreadTab, 0);
+  end;
 end;
 
 procedure TWinUsbDev.WndProc(var AMessage: TMessage);
@@ -202,10 +220,12 @@ end;
 procedure TWinUsbDev.wmDataRecived(var AMessage: TMessage);
 var
   Rec: TRecData;
+  PipeId: integer;
 begin
   Rec := TRecData(Pointer(AMessage.WParam));
+  PipeId := AMessage.LParam;
   if Assigned(OnDataRecived) then
-    OnDataRecived(self, Rec.Data);
+    OnDataRecived(self, PipeId, Rec.Data);
   Rec.Free;
 end;
 
@@ -215,6 +235,8 @@ var
   Reg: TRegistry;
   SL: TStringList;
   FName: string;
+  pipeInfo: TPipeInfois;
+  n, i, k: integer;
 begin
   Result := False;
   FName := '';
@@ -242,13 +264,36 @@ begin
 
   if FName <> '' then
   begin
-    hDevice := CreateFile(pchar(FName), GENERIC_WRITE or GENERIC_READ, FILE_SHARE_READ or FILE_SHARE_WRITE, nil, OPEN_EXISTING,
-      FILE_ATTRIBUTE_NORMAL or FILE_FLAG_OVERLAPPED, 0);
+    hDevice := CreateFile(pchar(FName), GENERIC_WRITE or GENERIC_READ, FILE_SHARE_READ or FILE_SHARE_WRITE, nil,
+      OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL or FILE_FLAG_OVERLAPPED, 0);
     if hDevice <> INVALID_HANDLE_VALUE then
     begin
       Result := WinUsb_Initialize(hDevice, hWinUsbHandle);
       if Result then
-        RdThread.setUsbHandle(hWinUsbHandle);
+      begin
+
+        getPipeInfo(pipeInfo);
+        n := Length(pipeInfo);
+        k := 0;
+        for i := 0 to n - 1 do
+        begin
+          if (pipeInfo[i].PipeId and $80) <> 0 then
+            inc(k);
+        end;
+        setLength(RdThreadTab, k);
+        k := 0;
+        for i := 0 to n - 1 do
+        begin
+          if (pipeInfo[i].PipeId and $80) <> 0 then
+          begin
+            RdThreadTab[k] := TRdThread.Create(mMyHandle, pipeInfo[i].PipeId);
+            RdThreadTab[k].FreeOnTerminate := False;
+            RdThreadTab[k].setUsbHandle(hWinUsbHandle);
+            inc(k);
+          end;
+        end;
+
+      end;
     end;
   end;
 end;
@@ -261,7 +306,7 @@ begin
     CloseHandle(hDevice);
     hDevice := INVALID_HANDLE_VALUE;
     hWinUsbHandle := INVALID_HANDLE_VALUE;
-    RdThread.setUsbHandle(INVALID_HANDLE_VALUE);
+    TerminateThreads;
   end;
 end;
 
@@ -300,7 +345,7 @@ begin
   end;
 end;
 
-function TWinUsbDev.writePipe(PipeID: Byte; var Data; len: integer): boolean;
+function TWinUsbDev.writePipe(PipeId: byte; var Data; len: integer): boolean;
 var
   BytesWritten: Cardinal;
 begin
@@ -313,10 +358,10 @@ begin
     Result := False;
 end;
 
-function TWinUsbDev.writePipe(PipeID: Byte; buf: TBytes): boolean;
+function TWinUsbDev.writePipe(PipeId: byte; buf: TBytes): boolean;
 begin
   if Length(buf) > 0 then
-    Result := writePipe(PipeID, buf[0], Length(buf))
+    Result := writePipe(PipeId, buf[0], Length(buf))
   else
     Result := True;
 end;
