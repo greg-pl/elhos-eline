@@ -7,3 +7,8 @@
 *.o
 *.su
 *.bak
+Prog/.metadata/
+Prog/Dongle/.history/
+Prog/Dongle/build/
+Prog/Dongle/.settings/
+*.mk
