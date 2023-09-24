@@ -36,6 +36,7 @@
 #include "stm32f1xx_hal.h"
 
 /* USER CODE BEGIN INCLUDE */
+#define USBD_SUPPORT_WINUSB 1
 
 /* USER CODE END INCLUDE */
 

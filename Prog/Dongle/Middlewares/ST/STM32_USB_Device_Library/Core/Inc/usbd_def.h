@@ -102,6 +102,8 @@ extern "C" {
 #define  USB_REQ_GET_INTERFACE                          0x0AU
 #define  USB_REQ_SET_INTERFACE                          0x0BU
 #define  USB_REQ_SYNCH_FRAME                            0x0CU
+// Add my Michael Tien 8/26/2018
+#define  USB_REQ_MS_VENDOR_CODE                         0x75
 
 #define  USB_DESC_TYPE_DEVICE                           0x01U
 #define  USB_DESC_TYPE_CONFIGURATION                    0x02U
@@ -220,6 +222,9 @@ typedef struct
   uint8_t  *(*GetInterfaceStrDescriptor)(USBD_SpeedTypeDef speed, uint16_t *length);
 #if (USBD_LPM_ENABLED == 1U)
   uint8_t  *(*GetBOSDescriptor)(USBD_SpeedTypeDef speed, uint16_t *length);
+#endif
+#if (USBD_SUPPORT_WINUSB == 1)
+  uint8_t  *(*GetWinUSBOSDescriptor)(uint16_t *length);
 #endif
 } USBD_DescriptorsTypeDef;
 

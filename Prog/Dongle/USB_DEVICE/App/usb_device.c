@@ -30,6 +30,7 @@
 /* USER CODE BEGIN Includes */
 #include "usbd_winusb.h"
 #include "usbd_winusb_if.h"
+#include "usbd_desc_winusb.h"
 
 /* USER CODE END Includes */
 
@@ -91,7 +92,7 @@ void MX_USB_DEVICE_Init(void)
   /* USER CODE BEGIN USB_DEVICE_Init_PostTreatment */
 #endif
 
-  if (USBD_Init(&hUsbDeviceFS, &FS_Desc, DEVICE_FS) != USBD_OK)
+  if (USBD_Init(&hUsbDeviceFS, &FS_Desc_WinUsb, DEVICE_FS) != USBD_OK)
   {
     Error_Handler();
   }

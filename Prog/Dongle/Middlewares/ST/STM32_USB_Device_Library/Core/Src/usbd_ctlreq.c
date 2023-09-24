@@ -94,6 +94,10 @@ static void USBD_ClrFeature(USBD_HandleTypeDef *pdev,
 
 static uint8_t USBD_GetLen(uint8_t *buf);
 
+#if (USBD_SUPPORT_WINUSB==1)
+static void USBD_WinUSBGetDescriptor(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req);
+#endif
+
 /**
   * @}
   */
@@ -154,6 +158,12 @@ USBD_StatusTypeDef  USBD_StdDevReq(USBD_HandleTypeDef *pdev,
           USBD_ClrFeature(pdev, req);
           break;
 
+#if (USBD_SUPPORT_WINUSB==1)
+		case USB_REQ_MS_VENDOR_CODE:
+			USBD_WinUSBGetDescriptor(pdev, req);
+			break;
+#endif // (USBD_SUPPORT_WINUSB==1)
+
         default:
           USBD_CtlError(pdev, req);
           break;
@@ -213,6 +223,13 @@ USBD_StatusTypeDef  USBD_StdItfReq(USBD_HandleTypeDef *pdev,
       break;
 
     default:
+#if (USBD_SUPPORT_WINUSB==1)
+		if (req->bmRequest == 0xC1) {
+			USBD_WinUSBGetDescriptor(pdev, req);
+			break;
+		}
+#endif // (USBD_SUPPORT_WINUSB==1)
+
       USBD_CtlError(pdev, req);
       break;
   }
@@ -515,7 +532,11 @@ static void USBD_GetDescriptor(USBD_HandleTypeDef *pdev,
             err++;
           }
           break;
-
+#if (USBD_SUPPORT_WINUSB==1)
+		case 0xEE: // OS String
+			pbuf = (uint8_t*) pdev->pClass->GetWinUSBOSDescriptor(&len);
+			break;
+#endif // (USBD_SUPPORT_WINUSB==1)
         default:
 #if (USBD_SUPPORT_USER_STRING_DESC == 1U)
           if (pdev->pClass->GetUsrStrDescriptor != NULL)
@@ -901,6 +922,36 @@ static uint8_t USBD_GetLen(uint8_t *buf)
 
   return len;
 }
+
+#if (USBD_SUPPORT_WINUSB==1)
+static void USBD_WinUSBGetDescriptor(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req) {
+	uint16_t len;
+	uint8_t *pbuf;
+
+	printf("WinUSB:%u[v=%u L=%u] ", req->wIndex, req->wValue, req->wLength);
+	switch (req->wIndex) {
+	case 0x04: // compat ID
+		pbuf = pdev->pDesc->GetWinUSBOSFeatureDescriptor(&len);
+		break;
+	case 0x05:
+		pbuf = pdev->pDesc->GetWinUSBOSPropertyDescriptor(&len);
+		break;
+
+	default:
+		USBD_CtlError(pdev, req);
+		return;
+	}
+	if ((len != 0) && (req->wLength != 0)) {
+
+		len = MIN(len, req->wLength);
+
+		USBD_CtlSendData(pdev, pbuf, len);
+	}
+
+}
+
+#endif // (USBD_SUPPORT_WINUSB==1)
+
 /**
   * @}
   */
