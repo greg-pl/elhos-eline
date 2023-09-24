@@ -127,8 +127,12 @@ USBD_StatusTypeDef  USBD_StdDevReq(USBD_HandleTypeDef *pdev,
   {
     case USB_REQ_TYPE_CLASS:
     case USB_REQ_TYPE_VENDOR:
-      pdev->pClass->Setup(pdev, req);
-      break;
+		if (req->bRequest == USB_REQ_MS_VENDOR_CODE) {
+			USBD_WinUSBGetDescriptor(pdev, req);
+		} else {
+			pdev->pClass->Setup(pdev, req);
+		}
+		break;
 
     case USB_REQ_TYPE_STANDARD:
       printf("SDR:%u ", req->bRequest);
@@ -453,6 +457,7 @@ static void USBD_GetDescriptor(USBD_HandleTypeDef *pdev,
       break;
 
     case USB_DESC_TYPE_CONFIGURATION:
+		printf("DCFG:%u ", pdev->dev_speed);
       if (pdev->dev_speed == USBD_SPEED_HIGH)
       {
         pbuf = pdev->pClass->GetHSConfigDescriptor(&len);
@@ -466,6 +471,7 @@ static void USBD_GetDescriptor(USBD_HandleTypeDef *pdev,
       break;
 
     case USB_DESC_TYPE_STRING:
+		printf("STR:%u ", (uint8_t) (req->wValue));
       switch ((uint8_t)(req->wValue))
       {
         case USBD_IDX_LANGID_STR:

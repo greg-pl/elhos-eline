@@ -51,7 +51,9 @@ USBD_DescriptorsTypeDef FS_Desc_WinUsb =
 , USBD_FS_ConfigStrDescriptor
 , USBD_FS_InterfaceStrDescriptor
 
+, USBD_WinUSBOSFeatureDescriptor
 , USBD_WinUSBOSPropertyDescriptor
+
 };
 
 
@@ -375,6 +377,7 @@ uint8_t* USBD_WinUSBOSFeatureDescriptor(uint16_t* length)
   *length = USB_LEN_OS_FEATURE_DESC;
   return USBD_WINUSB_OSFeatureDesc;
 }
+
 uint8_t* USBD_WinUSBOSPropertyDescriptor(uint16_t* length)
 {
   printf("WinUsbProp ");
