@@ -36,6 +36,7 @@
 #include "stm32f1xx_hal.h"
 
 /* USER CODE BEGIN INCLUDE */
+#define USBD_SUPPORT_WINUSB 1
 
 /* USER CODE END INCLUDE */
 
@@ -74,8 +75,6 @@
 #define USBD_SELF_POWERED     1
 /*---------- -----------*/
 #define MAX_STATIC_ALLOC_SIZE     512
-
-#define USBD_SUPPORT_WINUSB       1
 
 /****************************************/
 /* #define for FS and HS identification */

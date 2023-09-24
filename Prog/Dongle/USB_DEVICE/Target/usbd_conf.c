@@ -116,9 +116,7 @@ static void PCD_SetupStageCallback(PCD_HandleTypeDef *hpcd)
 void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef *hpcd)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
-  printf("SetupStage:");
   USBD_LL_SetupStage((USBD_HandleTypeDef*)hpcd->pData, (uint8_t *)hpcd->Setup);
-  printf("\r\n");
 }
 
 /**
@@ -148,7 +146,6 @@ static void PCD_DataInStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
 void HAL_PCD_DataInStageCallback(PCD_HandleTypeDef *hpcd, uint8_t epnum)
 #endif /* USE_HAL_PCD_REGISTER_CALLBACKS */
 {
-  printf("DataIp, epNum=%u\r\n",epnum);
   USBD_LL_DataInStage((USBD_HandleTypeDef*)hpcd->pData, epnum, hpcd->IN_ep[epnum].xfer_buff);
 }
 

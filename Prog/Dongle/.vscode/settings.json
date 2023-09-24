@@ -1,17 +1,23 @@
 {
-    "cortex-debug.armToolchainPath": "n:/", // Change the path here
+    "cortex-debug.armToolchainPath": "n:/bin", // Change the path here
     "terminal.integrated.defaultProfile.windows": "PowerShell",
     "search.exclude": {
         "**/.history": true,
         "**/Output": true,
+        "**/Debug": true,
     },
     "files.watcherExclude": {
         "**/.history": true,
         "**/Output": true,
+        "**/Debug": true,
     },
     "files.associations": {
         "*.h": "c",
         "*.c": "c"
     },
-   "cortex-debug.variableUseNaturalFormat": true,
+"cortex-debug.variableUseNaturalFormat": true,
+"cSpell.words": [
+    "USBD",
+    "WINUSB"
+],
 }

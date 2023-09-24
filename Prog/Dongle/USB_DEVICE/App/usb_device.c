@@ -28,6 +28,9 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN Includes */
+#include "usbd_winusb.h"
+#include "usbd_winusb_if.h"
+#include "usbd_desc_winusb.h"
 
 /* USER CODE END Includes */
 
@@ -65,7 +68,7 @@ USBD_HandleTypeDef hUsbDeviceFS;
 void MX_USB_DEVICE_Init(void)
 {
   /* USER CODE BEGIN USB_DEVICE_Init_PreTreatment */
-
+#if 0
   /* USER CODE END USB_DEVICE_Init_PreTreatment */
 
   /* Init Device Library, add supported class and start the library. */
@@ -87,6 +90,27 @@ void MX_USB_DEVICE_Init(void)
   }
 
   /* USER CODE BEGIN USB_DEVICE_Init_PostTreatment */
+#endif
+
+  if (USBD_Init(&hUsbDeviceFS, &FS_Desc_WinUsb, DEVICE_FS) != USBD_OK)
+  {
+    Error_Handler();
+  }
+  if (USBD_RegisterClass(&hUsbDeviceFS, &USBD_WINUSB) != USBD_OK)
+  {
+    Error_Handler();
+  }
+  if (USBD_WINUSB_RegisterInterface(&hUsbDeviceFS, &USBD_WINUSB_Interface_fops_FS) != USBD_OK)
+  {
+    Error_Handler();
+  }
+  if (USBD_Start(&hUsbDeviceFS) != USBD_OK)
+  {
+    Error_Handler();
+  }
+
+
+
 
   /* USER CODE END USB_DEVICE_Init_PostTreatment */
 }

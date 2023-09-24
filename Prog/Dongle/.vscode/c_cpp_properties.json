@@ -1,0 +1,9 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "defines": ["USBD_SUPPORT_WINUSB", "BAR=100"],
+        }
+    ],
+    "version": 4
+}

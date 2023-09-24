@@ -18,6 +18,10 @@ type
     PipeInfoBtn: TButton;
     VendorIdEdit: TLabeledEdit;
     ProductIdEdit: TLabeledEdit;
+    Panel1: TPanel;
+    LogMemo: TMemo;
+    Splitter1: TSplitter;
+    RepeatBox: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure OpenBtnClick(Sender: TObject);
     procedure DevDscrBtnClick(Sender: TObject);
@@ -26,11 +30,15 @@ type
     procedure CloseBtnClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure PipeInfoBtnClick(Sender: TObject);
+    procedure RepeatBoxClick(Sender: TObject);
   private
     Dev: TWinUsbDev;
+    SendRepeatCounter: integer;
+    StartSendTick: cardinal;
     procedure Wr(s: string);
+    procedure Log(s: string);
     function OkErr(q: boolean): string;
-    procedure OnDataRecivedProc(Sender: TObject; buf : TBytes);
+    procedure OnDataRecivedProc(Sender: TObject; PipeId: integer; buf: TBytes);
   public
     { Public declarations }
   end;
@@ -70,21 +78,59 @@ begin
   Dev.OnDataRecived := OnDataRecivedProc;
 end;
 
-procedure TForm1.OnDataRecivedProc(Sender: TObject; buf : TBytes);
+procedure TForm1.OnDataRecivedProc(Sender: TObject; PipeId: integer; buf: TBytes);
 var
-  s1 : AnsiString;
-  n : integer;
+  s1: AnsiString;
+  n: integer;
+  bb: TBytes;
+  i: integer;
 begin
-  n := AnsiStrings.StrLen(PAnsiChar(@buf[0]));
-  setlength(s1,n);
-  move(buf[0],s1[1],n);
-  Wr(Format('DataRecived N=%u <%s>',[length(buf),s1]));
+  n := Length(buf);
+  setlength(s1, n);
+  move(buf[0], s1[1], n);
+
+  PipeId := PipeId and $7F;
+  if PipeId = 1 then
+  begin
+    if RepeatBox.Checked then
+    begin
+      if SendRepeatCounter < 10000 then
+      begin
+        if SendRepeatCounter = 0 then
+          StartSendTick := gettickcount;
+        setlength(bb, 64);
+        for i := 0 to Length(bb) - 1 do
+          bb[i] := $40 + i;
+        if Dev.writePipe(1, bb) = false then
+          RepeatBox.Checked := false;
+        inc(SendRepeatCounter);
+      end
+      else
+      begin
+        Wr(Format('Tick=%u', [gettickcount - StartSendTick]));
+        RepeatBox.Checked := false;
+      end;
+    end
+    else
+    begin
+      Wr(Format('DataRecived Tick=%u PipeID=0x%X, N=%u', [gettickcount, PipeId, Length(buf)]));
+    end;
+  end
+  else if PipeId = 2 then
+  begin
+    Log(s1);
+  end;
 
 end;
 
 procedure TForm1.Wr(s: string);
 begin
   Memo1.Lines.Add(s);
+end;
+
+procedure TForm1.Log(s: string);
+begin
+  LogMemo.Lines.Add(s);
 end;
 
 function TForm1.OkErr(q: boolean): string;
@@ -111,13 +157,13 @@ var
   i, n: integer;
 begin
   Dev.getPipeInfo(PipeInfos);
-  n := length(PipeInfos);
+  n := Length(PipeInfos);
   if n > 0 then
   begin
     for i := 0 to n - 1 do
     begin
-      Wr(Format('Pipe_%u  T=%u Id=0x%.2X MaxPkt=0x%.2X Interv=%u', [i, (PipeInfos[i].PipeType and $ff), (PipeInfos[i].PipeId and $ff), PipeInfos[i].MaximumPacketSize,
-        PipeInfos[i].Interval]));
+      Wr(Format('Pipe_%u  T=%u Id=0x%.2X MaxPkt=0x%.2X Interv=%u', [i, (PipeInfos[i].PipeType and $FF),
+        (PipeInfos[i].PipeId and $FF), PipeInfos[i].MaximumPacketSize, PipeInfos[i].Interval]));
     end;
   end
   else
@@ -125,13 +171,18 @@ begin
 
 end;
 
+procedure TForm1.RepeatBoxClick(Sender: TObject);
+begin
+  SendRepeatCounter := 0;
+end;
+
 procedure TForm1.Wr128BtnClick(Sender: TObject);
 var
   bb: TBytes;
   i: integer;
 begin
-  Setlength(bb, 128);
-  for i := 0 to length(bb) - 1 do
+  setlength(bb, 128);
+  for i := 0 to Length(bb) - 1 do
     bb[i] := $60 + i;
   Wr('Write:' + OkErr(Dev.writePipe(1, bb)));
 end;
@@ -141,10 +192,10 @@ var
   bb: TBytes;
   i: integer;
 begin
-  Setlength(bb, 16);
-  for i := 0 to length(bb) - 1 do
-    bb[i] := $60 + i;
-  Wr('Write:' + OkErr(Dev.writePipe(1, bb)));
+  setlength(bb, 64);
+  for i := 0 to Length(bb) - 1 do
+    bb[i] := $40 + i;
+  Wr(Format('Write:%s', [OkErr(Dev.writePipe(1, bb))]));
 end;
 
 end.
