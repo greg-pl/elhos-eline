@@ -9,7 +9,7 @@
 #include "stdio.h"
 #include "string.h"
 
-#include "usbd_cdc_if.h"
+#include "usbd_winusb_if.h"
 
 #include "main.h"
 #include "UMain.h"
@@ -48,7 +48,9 @@ extern "C" int __io_putchar(int ch) {
 	return 1;
 }
 
-extern "C" void onCDC_ReceivePacket(char *Buf, int Len) {
+int RecPacketCnt;
+extern "C" void onWINUSB_ReceivePacket(char *Buf, int Len) {
+	/*
 	int n = Len;
 	if (n > 16)
 		n = 16;
@@ -60,7 +62,10 @@ extern "C" void onCDC_ReceivePacket(char *Buf, int Len) {
 
 	char sndTxt[100];
 	int m = snprintf(sndTxt,sizeof(sndTxt),"Odebrano %u bytes",Len);
-	CDC_Transmit_FS((uint8_t*) sndTxt, m);
+	WINUSB_SendData(sndTxt, m);
+	*/
+	WINUSB_SendData(Buf,Len);
+	RecPacketCnt++;
 
 }
 
@@ -83,22 +88,16 @@ extern "C" void main2(void) {
 	int v = 0;
 	while (1) {
 		uint32_t tt = HAL_GetTick();
-		if (tt - led_tt > 4000) {
+		if (tt - led_tt > 1000) {
 			led_tt = tt;
 			led2 = !led2;
 			setLed1(led2);
-			/*
-			 char buf[30];
-			 snprintf(buf,sizeof(buf),"v=%u\r\n", v++);
-			 DbgUart::WriteStr(buf);
-			 */
-			printf("v=%u ", v);
+
+			printf("RecPacketCnt=%u\r\n", RecPacketCnt);
 			fflush(stdout);
 
-			memset(TxData, ' ', sizeof(TxData));
-			snprintf(TxData, sizeof(TxData), "%u", v);
-			CDC_Transmit_FS((uint8_t*) TxData, sizeof(TxData));
-			v++;
+			WINUSB_LogPrint("RecPacketCnt=%u\n",RecPacketCnt);
+
 		}
 	}
 

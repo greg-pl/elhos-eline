@@ -6,6 +6,7 @@
  */
 
 #include "usbd_winusb_if.h"
+#include "stdarg.h"
 
 #define APP_RX_DATA_SIZE  512
 #define APP_TX_DATA_SIZE  512
@@ -13,124 +14,79 @@
 uint8_t WinUsbRxBufferFS[APP_RX_DATA_SIZE];
 uint8_t WinUsbTxBufferFS[APP_TX_DATA_SIZE];
 
-
 extern USBD_HandleTypeDef hUsbDeviceFS;
-
 
 static int8_t WINUSB_Init_FS(void);
 static int8_t WINUSB_DeInit_FS(void);
-static int8_t WINUSB_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length);
-static int8_t WINUSB_Receive_FS(uint8_t* pbuf, uint32_t* Len);
+static int8_t WINUSB_Control_FS(uint8_t cmd, uint8_t *pbuf, uint16_t length);
+static int8_t WINUSB_Receive_FS(uint8_t *pbuf, uint32_t *Len);
 
-void onWINUSB_ReceivePacket(char* Buf, int Len);
+void onWINUSB_ReceivePacket(char *Buf, int Len);
 
-USBD_WINUSB_ItfTypeDef USBD_WINUSB_Interface_fops_FS =
-{
-  WINUSB_Init_FS,
-  WINUSB_DeInit_FS,
-  WINUSB_Control_FS,
-  WINUSB_Receive_FS
-};
+USBD_WINUSB_ItfTypeDef USBD_WINUSB_Interface_fops_FS = { WINUSB_Init_FS, WINUSB_DeInit_FS, WINUSB_Control_FS, WINUSB_Receive_FS };
 
-
-static int8_t WINUSB_Init_FS(void)
-{
-  USBD_WINUSB_SetTxBuffer(&hUsbDeviceFS, WinUsbTxBufferFS, 0);
-  USBD_WINUSB_SetRxBuffer(&hUsbDeviceFS, WinUsbRxBufferFS);
-  return (USBD_OK);
+static int8_t WINUSB_Init_FS(void) {
+	USBD_WINUSB_SetRxBuffer(&hUsbDeviceFS, WinUsbRxBufferFS);
+	USBD_WINUSB_SetTxDataBuffer(&hUsbDeviceFS, WinUsbTxBufferFS, 0);
+	return (USBD_OK);
 }
 
-static int8_t WINUSB_DeInit_FS(void)
-{
-  return (USBD_OK);
+static int8_t WINUSB_DeInit_FS(void) {
+	return (USBD_OK);
 }
 
-static int8_t WINUSB_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
-{
-  switch (cmd) {
-  case CDC_SEND_ENCAPSULATED_COMMAND:
-
-    break;
-
-  case CDC_GET_ENCAPSULATED_RESPONSE:
-
-    break;
-
-  case CDC_SET_COMM_FEATURE:
-
-    break;
-
-  case CDC_GET_COMM_FEATURE:
-
-    break;
-
-  case CDC_CLEAR_COMM_FEATURE:
-
-    break;
-
-    /*******************************************************************************/
-    /* Line Coding Structure                                                       */
-    /*-----------------------------------------------------------------------------*/
-    /* Offset | Field       | Size | Value  | Description                          */
-    /* 0      | dwDTERate   |   4  | Number |Data terminal rate, in bits per second*/
-    /* 4      | bCharFormat |   1  | Number | Stop bits                            */
-    /*                                        0 - 1 Stop bit                       */
-    /*                                        1 - 1.5 Stop bits                    */
-    /*                                        2 - 2 Stop bits                      */
-    /* 5      | bParityType |  1   | Number | Parity                               */
-    /*                                        0 - None                             */
-    /*                                        1 - Odd                              */
-    /*                                        2 - Even                             */
-    /*                                        3 - Mark                             */
-    /*                                        4 - Space                            */
-    /* 6      | bDataBits  |   1   | Number Data bits (5, 6, 7, 8 or 16).          */
-    /*******************************************************************************/
-  case CDC_SET_LINE_CODING:
-
-    break;
-
-  case CDC_GET_LINE_CODING:
-
-    break;
-
-  case CDC_SET_CONTROL_LINE_STATE:
-
-    break;
-
-  case CDC_SEND_BREAK:
-
-    break;
-
-  default:
-    break;
-  }
-
-  return (USBD_OK);
+static int8_t WINUSB_Control_FS(uint8_t cmd, uint8_t *pbuf, uint16_t length) {
+	printf("WINUSB_Control_FS cmd=%u, len=%u\r\n", cmd, length);
+	return (USBD_OK);
 }
 
-static int8_t WINUSB_Receive_FS(uint8_t* Buf, uint32_t* Len)
-{
-  USBD_WINUSB_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
-  USBD_WINUSB_ReceivePacket(&hUsbDeviceFS);
-  onWINUSB_ReceivePacket((char*)Buf, *Len);
-  return (USBD_OK);
+static int8_t WINUSB_Receive_FS(uint8_t *Buf, uint32_t *Len) {
+	USBD_WINUSB_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
+	USBD_WINUSB_ReceivePacket(&hUsbDeviceFS);
+	onWINUSB_ReceivePacket((char*) Buf, *Len);
+	return (USBD_OK);
 }
 
-uint8_t WINUSB_Transmit_FS(uint8_t* Buf, uint16_t Len)
-{
-  uint8_t result = USBD_OK;
-  USBD_WINUSB_HandleTypeDef* hcdc = (USBD_WINUSB_HandleTypeDef*)hUsbDeviceFS.pClassData;
+uint8_t WINUSB_SendData(const void *Buf, uint16_t Len) {
+	uint8_t result = USBD_OK;
+	USBD_WINUSB_HandleTypeDef *hcdc = (USBD_WINUSB_HandleTypeDef*) hUsbDeviceFS.pClassData;
 
-  if (hcdc->TxState != 0) {
-    return USBD_BUSY;
-  }
-  USBD_WINUSB_SetTxBuffer(&hUsbDeviceFS, Buf, Len);
-  result = USBD_WINUSB_TransmitPacket(&hUsbDeviceFS);
-  return result;
+	if (hcdc->TxState != 0) {
+		return USBD_BUSY;
+	}
+	USBD_WINUSB_SetTxDataBuffer(&hUsbDeviceFS, Buf, Len);
+	result = USBD_WINUSB_TransmitDataPacket(&hUsbDeviceFS);
+	return result;
 }
 
+#if (LOGGER_PIPE == 1)
+uint8_t WINUSB_LogBuf(const void *Buf, uint16_t Len) {
+	uint8_t result = USBD_OK;
+	USBD_WINUSB_HandleTypeDef *hcdc = (USBD_WINUSB_HandleTypeDef*) hUsbDeviceFS.pClassData;
 
-__attribute__((weak)) void onWINUSB_ReceivePacket(char* Buf, int Len) {
+	if (hcdc->LogState != 0) {
+		return USBD_BUSY;
+	}
+	USBD_WINUSB_SetTxLogBuffer(&hUsbDeviceFS, Buf, Len);
+	result = USBD_WINUSB_TransmitLogPacket(&hUsbDeviceFS);
+	return result;
+}
+
+uint8_t WINUSB_SendLogStr(const char *txt) {
+	return WINUSB_LogBuf(txt, strlen(txt));
+}
+uint8_t WINUSB_LogPrint(const char *txt, ...) {
+	char buffer[100];
+	va_list argList;
+	va_start(argList, txt);
+	int n = vsnprintf(buffer, sizeof(buffer), txt, argList);
+	va_end(argList);
+	return WINUSB_LogBuf(buffer,n);
+}
+
+#endif
+
+__attribute__((weak)) void onWINUSB_ReceivePacket(char *Buf, int Len) {
 
 }
 
