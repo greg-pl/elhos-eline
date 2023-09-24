@@ -96,7 +96,7 @@ void MX_USB_DEVICE_Init(void)
   {
     Error_Handler();
   }
-  if (USBD_RegisterClass(&hUsbDeviceFS, &USBD_CDC) != USBD_OK)
+  if (USBD_RegisterClass(&hUsbDeviceFS, &USBD_WINUSB) != USBD_OK)
   {
     Error_Handler();
   }
