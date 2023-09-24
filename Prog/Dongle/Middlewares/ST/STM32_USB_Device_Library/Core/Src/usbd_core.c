@@ -268,7 +268,6 @@ USBD_StatusTypeDef USBD_LL_SetupStage(USBD_HandleTypeDef *pdev, uint8_t *psetup)
 
   pdev->ep0_data_len = pdev->request.wLength;
 
-printf("SS=%u ",pdev->request.bmRequest & 0x1FU);
   switch (pdev->request.bmRequest & 0x1FU)
   {
     case USB_REQ_RECIPIENT_DEVICE:

@@ -210,21 +210,7 @@ __ALIGN_BEGIN uint8_t USBD_StringSerial[USB_SIZ_STRING_SERIAL] __ALIGN_END = {
   USB_DESC_TYPE_STRING,
 };
 
-/**
-  * @}
-  */
 
-  /** @defgroup USBD_DESC_Private_Functions USBD_DESC_Private_Functions
-    * @brief Private functions.
-    * @{
-    */
-
-    /**
-      * @brief  Return the device descriptor
-      * @param  speed : Current device speed
-      * @param  length : Pointer to data length variable
-      * @retval Pointer to descriptor buffer
-      */
 uint8_t* USBD_FS_DeviceDescriptor(USBD_SpeedTypeDef speed, uint16_t* length)
 {
   UNUSED(speed);
@@ -232,12 +218,6 @@ uint8_t* USBD_FS_DeviceDescriptor(USBD_SpeedTypeDef speed, uint16_t* length)
   return USBD_FS_DeviceDesc;
 }
 
-/**
-  * @brief  Return the LangID string descriptor
-  * @param  speed : Current device speed
-  * @param  length : Pointer to data length variable
-  * @retval Pointer to descriptor buffer
-  */
 uint8_t* USBD_FS_LangIDStrDescriptor(USBD_SpeedTypeDef speed, uint16_t* length)
 {
   UNUSED(speed);
@@ -245,12 +225,6 @@ uint8_t* USBD_FS_LangIDStrDescriptor(USBD_SpeedTypeDef speed, uint16_t* length)
   return USBD_LangIDDesc;
 }
 
-/**
-  * @brief  Return the product string descriptor
-  * @param  speed : Current device speed
-  * @param  length : Pointer to data length variable
-  * @retval Pointer to descriptor buffer
-  */
 uint8_t* USBD_FS_ProductStrDescriptor(USBD_SpeedTypeDef speed, uint16_t* length)
 {
   if (speed == 0)
@@ -263,12 +237,6 @@ uint8_t* USBD_FS_ProductStrDescriptor(USBD_SpeedTypeDef speed, uint16_t* length)
   return USBD_StrDesc;
 }
 
-/**
-  * @brief  Return the manufacturer string descriptor
-  * @param  speed : Current device speed
-  * @param  length : Pointer to data length variable
-  * @retval Pointer to descriptor buffer
-  */
 uint8_t* USBD_FS_ManufacturerStrDescriptor(USBD_SpeedTypeDef speed, uint16_t* length)
 {
   UNUSED(speed);
@@ -276,32 +244,15 @@ uint8_t* USBD_FS_ManufacturerStrDescriptor(USBD_SpeedTypeDef speed, uint16_t* le
   return USBD_StrDesc;
 }
 
-/**
-  * @brief  Return the serial number string descriptor
-  * @param  speed : Current device speed
-  * @param  length : Pointer to data length variable
-  * @retval Pointer to descriptor buffer
-  */
 uint8_t* USBD_FS_SerialStrDescriptor(USBD_SpeedTypeDef speed, uint16_t* length)
 {
   UNUSED(speed);
   *length = USB_SIZ_STRING_SERIAL;
 
-  /* Update the serial number string descriptor with the data from the unique
-   * ID */
   Get_SerialNum();
-  /* USER CODE BEGIN USBD_FS_SerialStrDescriptor */
-
-  /* USER CODE END USBD_FS_SerialStrDescriptor */
   return (uint8_t*)USBD_StringSerial;
 }
 
-/**
-  * @brief  Return the configuration string descriptor
-  * @param  speed : Current device speed
-  * @param  length : Pointer to data length variable
-  * @retval Pointer to descriptor buffer
-  */
 uint8_t* USBD_FS_ConfigStrDescriptor(USBD_SpeedTypeDef speed, uint16_t* length)
 {
   if (speed == USBD_SPEED_HIGH)
@@ -367,20 +318,17 @@ const uint8_t USBD_OS_STRING[9] = {
 };
 uint8_t* USBD_WinUSBOSStrDescriptor(uint16_t* length)
 {
-  printf("WinUSB ");
   USBD_GetString((uint8_t*)USBD_OS_STRING, USBD_StrDesc, length);
   return USBD_StrDesc;
 }
 uint8_t* USBD_WinUSBOSFeatureDescriptor(uint16_t* length)
 {
-  printf("WinUsbFutu ");
   *length = USB_LEN_OS_FEATURE_DESC;
   return USBD_WINUSB_OSFeatureDesc;
 }
 
 uint8_t* USBD_WinUSBOSPropertyDescriptor(uint16_t* length)
 {
-  printf("WinUsbProp ");
   *length = USB_LEN_OS_PROPERTY_DESC;
   return USBD_WINUSB_OSPropertyDesc;
 }

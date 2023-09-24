@@ -120,9 +120,6 @@ USBD_StatusTypeDef  USBD_StdDevReq(USBD_HandleTypeDef *pdev,
 {
   USBD_StatusTypeDef ret = USBD_OK;
 
-  printf("DR:%u ", req->bmRequest & USB_REQ_TYPE_MASK);
-
-
   switch (req->bmRequest & USB_REQ_TYPE_MASK)
   {
     case USB_REQ_TYPE_CLASS:
@@ -135,7 +132,6 @@ USBD_StatusTypeDef  USBD_StdDevReq(USBD_HandleTypeDef *pdev,
 		break;
 
     case USB_REQ_TYPE_STANDARD:
-      printf("SDR:%u ", req->bRequest);
       switch (req->bRequest)
       {
         case USB_REQ_GET_DESCRIPTOR:
@@ -198,7 +194,6 @@ USBD_StatusTypeDef  USBD_StdItfReq(USBD_HandleTypeDef *pdev,
 {
   USBD_StatusTypeDef ret = USBD_OK;
 
-  printf("IR:%u ", req->bmRequest & USB_REQ_TYPE_MASK);
   switch (req->bmRequest & USB_REQ_TYPE_MASK)
   {
     case USB_REQ_TYPE_CLASS:
@@ -261,7 +256,6 @@ USBD_StatusTypeDef  USBD_StdEPReq(USBD_HandleTypeDef *pdev,
   USBD_StatusTypeDef ret = USBD_OK;
   ep_addr  = LOBYTE(req->wIndex);
 
-  printf("ER:%u ", req->bmRequest & USB_REQ_TYPE_MASK);
   switch (req->bmRequest & USB_REQ_TYPE_MASK)
   {
     case USB_REQ_TYPE_CLASS:
@@ -436,7 +430,6 @@ static void USBD_GetDescriptor(USBD_HandleTypeDef *pdev,
   uint8_t *pbuf = NULL;
   uint8_t err = 0U;
 
-  printf("DSCR:%u ", req->wValue >> 8);
   switch (req->wValue >> 8)
   {
 #if (USBD_LPM_ENABLED == 1U)
@@ -457,7 +450,6 @@ static void USBD_GetDescriptor(USBD_HandleTypeDef *pdev,
       break;
 
     case USB_DESC_TYPE_CONFIGURATION:
-		printf("DCFG:%u ", pdev->dev_speed);
       if (pdev->dev_speed == USBD_SPEED_HIGH)
       {
         pbuf = pdev->pClass->GetHSConfigDescriptor(&len);
@@ -471,7 +463,6 @@ static void USBD_GetDescriptor(USBD_HandleTypeDef *pdev,
       break;
 
     case USB_DESC_TYPE_STRING:
-		printf("STR:%u ", (uint8_t) (req->wValue));
       switch ((uint8_t)(req->wValue))
       {
         case USBD_IDX_LANGID_STR:
@@ -680,8 +671,6 @@ static void USBD_SetConfig(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req)
   }
   else
   {
-		printf("SC:%u ",pdev->dev_state);
-
     switch (pdev->dev_state)
     {
       case USBD_STATE_ADDRESSED:
@@ -781,7 +770,6 @@ static void USBD_GetConfig(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req)
 */
 static void USBD_GetStatus(USBD_HandleTypeDef *pdev, USBD_SetupReqTypedef *req)
 {
-	printf("GST:%u ",pdev->dev_state);
   switch (pdev->dev_state)
   {
     case USBD_STATE_DEFAULT:
@@ -944,7 +932,6 @@ static void USBD_WinUSBGetDescriptor(USBD_HandleTypeDef *pdev, USBD_SetupReqType
 	uint16_t len;
 	uint8_t *pbuf;
 
-	printf("WinUSB:%u[v=%u L=%u] ", req->wIndex, req->wValue, req->wLength);
 	switch (req->wIndex) {
 	case 0x04: // compat ID
 		pbuf = pdev->pDesc->GetWinUSBOSFeatureDescriptor(&len);
